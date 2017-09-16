@@ -32,7 +32,7 @@ cd "${destdir}"/examples/using-checker-lib-from-cpp/
 
 export LDFLAGS="-L${destdir}/${prefix}/lib -ldivvun -lcg3 -lhfst -larchive ${LDFLAGS:-}" \
        CXXFLAGS="-I${destdir}/${prefix}/include ${CXXFLAGS:-}"                           \
-       LD_LIBRARY_PATH="${destdir}/${prefix}/lib:${destdir}/${prefix}/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
+       LD_LIBRARY_PATH="${destdir}/${prefix}/lib:${destdir}/${prefix}/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}"
 ./autogen.sh &>"${log}"
 ./configure  &>"${log}"
 make -j3     &>"${log}"
