@@ -34,7 +34,10 @@ export LDFLAGS="-L${destdir}/${prefix}/lib -ldivvun -lcg3 -lhfst -larchive ${LDF
        CXXFLAGS="-I${destdir}/${prefix}/include ${CXXFLAGS:-}"                           \
        LD_LIBRARY_PATH="${destdir}/${prefix}/lib:${destdir}/${prefix}/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}"
 ./autogen.sh &>"${log}"
-./configure  &>"${log}"
+if ! ./configure  &>"${log}"; then
+    cat config.log
+    exit 1
+fi
 make -j3     &>"${log}"
 
 input="seammas ballat ođđa dieđuiguin"
